@@ -33,8 +33,7 @@ def quick_sort_iter(nums: list):
         nums[store], nums[right] = nums[right], nums[store]
         return store
 
-    stack = []
-    stack.append((0, len(nums) - 1))
+    stack = [(0, len(nums) - 1)]
     while len(stack) > 0:
         left, right = stack.pop()
         if left >= right: continue
