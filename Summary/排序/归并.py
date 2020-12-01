@@ -29,7 +29,7 @@ def merge_sort_iter(nums: list) -> list:
         res.extend(l1 if l1 else l2)
         return res
 
-    # 类似树的后序遍历，stack 里不存 list 是因为这里每层迭代都需要上一次的结果，而不是缓存下来
+    # 类似树的后序遍历，stack 里存 index 而不是 list 是因为这里每层迭代都需要上一次的结果，而不是缓存下来
     stack = [(0, len(nums))]
     res = []
     while stack:
