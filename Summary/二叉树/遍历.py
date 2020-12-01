@@ -73,3 +73,6 @@ def postorder_iter(root: TreeNode):
     for node in reversed(res):
         node.visit()
 
+test = TreeNode('A', left=TreeNode('B', left=TreeNode('D'), right=TreeNode('E')), right=TreeNode('C', left=TreeNode('F', left=TreeNode('H'), right=TreeNode('I')), right=TreeNode('G')))
+postorder_iter(test)
+
