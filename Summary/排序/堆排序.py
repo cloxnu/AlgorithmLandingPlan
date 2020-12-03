@@ -1,6 +1,6 @@
 # 堆排序 时间 O(n log n) 空间 O(1)
 
-# 调整堆（递归形式）
+# 递归形式
 def heap_sort(nums: list) -> list:
     def adjust(heap: list, start, end):
         left = start * 2 + 1
@@ -21,7 +21,7 @@ def heap_sort(nums: list) -> list:
     return nums
 
 
-# 调整堆（迭代形式）
+# 迭代形式
 def heap_sort_iter(nums: list) -> list:
     def adjust(heap: list, start, end):
         while start < end:
