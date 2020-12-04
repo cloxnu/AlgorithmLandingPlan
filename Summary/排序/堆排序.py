@@ -5,7 +5,7 @@ def heap_sort(nums: list) -> list:
     def adjust(heap: list, start, end):
         left = start * 2 + 1
         right = left + 1
-        if start >= end or left >= end: return
+        if left >= end: return
         max_child = right if right < end and heap[left] < heap[right] else left  # 选取最大的子结点
         if heap[start] < heap[max_child]:
             heap[start], heap[max_child] = heap[max_child], heap[start]
