@@ -36,7 +36,7 @@ def quick_sort_iter(nums: list):
         return store
 
     stack = [(0, len(nums) - 1)]
-    while len(stack) > 0:
+    while stack:
         left, right = stack.pop()
         if left >= right: continue
         store = partition(left, right)
