@@ -27,4 +27,4 @@ def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
         node2 = node2.next
     return dummy.next
 
-
+# 没那么复杂，啥时候再写一遍

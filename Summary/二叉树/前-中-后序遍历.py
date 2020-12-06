@@ -17,21 +17,21 @@ class TreeNode:
 def preorder(node: TreeNode):
     if node is None: return
     node.visit() # 访问当前结点
-    node.preorder(node.left)
-    node.preorder(node.right)
+    preorder(node.left)
+    preorder(node.right)
 
 ## 中序遍历
 def inorder(node: TreeNode):
     if node is None: return
-    node.inorder(node.left)
+    inorder(node.left)
     node.visit() # 访问当前结点
-    node.inorder(node.right)
+    inorder(node.right)
 
 ## 后序遍历
 def postorder(node: TreeNode):
     if node is None: return
-    node.postorder(node.left)
-    node.postorder(node.right)
+    postorder(node.left)
+    postorder(node.right)
     node.visit() # 访问当前结点
 
 
