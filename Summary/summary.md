@@ -14,7 +14,9 @@
 
 ## 经典算法
 
-[KMP 字符串匹配](字符串/KMP.py)
+[KMP 字符串匹配](其他/KMP.py)
+
+[全排列](其他/全排列.py)
 
 [青蛙跳台阶](../CodingInterviews/10-%20II.%20青蛙跳台阶问题.py)/[斐波那契数列](../CodingInterviews/10-%20I.%20斐波那契数列.py)
 
