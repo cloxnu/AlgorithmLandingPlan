@@ -1,9 +1,16 @@
 # 并查集
-#
-# [并查集](https://ds.an.dog/content/V.%E6%A0%91/5.10-%E9%9B%86%E5%90%88%E8%A1%A8%E7%A4%BA.html)
-# 实现「加权规则」和「折叠规则」
-# 本算法时间复杂度为 O(nα(n)). α(n) 是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数 α(n) 的值不会超过 5，因此也可以看成是常数时间复杂度。
-#
+
+"""
+[并查集](https://ds.an.dog/content/V.%E6%A0%91/5.10-%E9%9B%86%E5%90%88%E8%A1%A8%E7%A4%BA.html)
+
+实现「加权规则」和「折叠规则」
+
+使用并查集，轻松秒掉
+[200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
+
+本算法时间复杂度为 O(nα(n)). α(n) 是反阿克曼函数，当自变量 n 的值在人类可观测的范围内（宇宙中粒子的数量）时，函数 α(n) 的值不会超过 5，因此也可以看成是常数时间复杂度。
+
+"""
 
 class UnionFind:
     def __init__(self, all_data: list):
@@ -19,6 +26,9 @@ class UnionFind:
             self.parent[data] = data  # 初始父亲结点为自己
             self.size[data] = 1
             self.union_num += 1
+
+    def __repr__(self):
+        return "parent: {}\nsize: {}\nunion_num: {}\n".format(self.parent, self.size, self.union_num)
 
     def add(self, *will_add_data):
         for data in will_add_data:
@@ -86,11 +96,6 @@ class UnionFind:
             self.parent[root1] = root2
             self.size[root2] += self.size[root1]
 
-    def output(self):
-        print("parent: {}".format(self.parent))
-        print("size: {}".format(self.size))
-        print("union_num: {}".format(self.union_num))
-
 
 if __name__ == '__main__':
     # nums = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
@@ -105,5 +110,5 @@ if __name__ == '__main__':
     union_find.union(2, 3)
     union_find.union(1, 2)
     union_find.union(0, 1)
-    union_find.output()
+    print(union_find)
 
