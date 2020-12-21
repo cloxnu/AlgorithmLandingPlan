@@ -1,3 +1,5 @@
+from itertools import accumulate
+
 class State:
     def __init__(self, left=None, right=None, suffix_link=None):
         self.left = left
@@ -76,15 +78,68 @@ class STree:
                 next_state = active_state.transition[self.string[left]]
         return active_state, left
 
+
 class Application:
+
+    # 最长公共子串
     @staticmethod
-    def lcs(string1, string2):
-        tree = STree(string1 + "#" + string2 + "$")
-        tree.root
+    def lcs(string1, string2, debug=False):
+        string = string1 + "#" + string2 + "$"
+        tree = STree(string)
+        if debug: print(tree)
+        
+        def dfs(state: State):
+            if state.right == float('inf'):
+                return '', state.left >= len(string) - len(string2) - 1
+            res, has_string1, has_string2 = [], False, False
+            for s in state.transition.values():
+                res_string, is_string2 = dfs(s)
+                if len(res_string) > 0:
+                    res.append((string[state.left:state.right+1] if state.left != -1 else "") + res_string)
+                else:
+                    if is_string2: has_string2 = True
+                    else: has_string1 = True
+            if has_string1 and has_string2:
+                res.append(string[state.left:state.right+1])
+            return max(res, key=lambda x: len(x)) if res else '', is_string2
+
+        return dfs(tree.root)[0]
+
+    # 最长公共子串
+    @staticmethod
+    def lcss(strings, debug=False):
+        string = '$'.join(strings) + '$'
+        str_lens = list(accumulate(strings, lambda x, y: x + len(y) + 1, initial=0))
+        tree = STree(string)
+        if debug: print(tree)
+        
+        def dfs(state: State):
+            if state.right == float('inf'):
+                return '', next(i for i in range(len(str_lens)-1) if state.left < str_lens[i+1])
+            res, string_set = [], set()
+            for s in state.transition.values():
+                res_string, string_idx = dfs(s)
+                if len(res_string) > 0:
+                    res.append((string[state.left:state.right+1] if state.left != -1 else "") + res_string)
+                else:
+                    string_set.add(string_idx)
+            if len(string_set) == len(strings):
+                res.append(string[state.left:state.right+1])
+            return max(res, key=lambda x: len(x)) if res else '', string_idx
+
+        return dfs(tree.root)[0]
+                
 
 
 if __name__ == '__main__':
     # tree = STree("abacdacdacdbc$")
-    tree = STree("cacaocac$ccaooc#")
-    print(tree)
+    # tree = STree("cacaocac#ccaooc$")
+    # tree = STree("1412412331$$")
+    # print(tree)
+
+    # print(Application.lcs("12335665464566321", "12366546456653321"))
+    print(Application.lcs("abcd", "bcd", debug=True))
+    # print(Application.lcss(["abcdfd", "bcdsf"], debug=True))
+
+    
 
