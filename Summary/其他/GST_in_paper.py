@@ -126,6 +126,7 @@ class Application:
     def lcss(strings, debug=False):
         string = '$'.join(strings) + '$'
         str_lens = list(accumulate(strings, lambda x, y: x + len(y) + 1, initial=0))
+        tree = STree()
         tree.build_with_automatic_end(strings)
         if debug: print(tree)
         
@@ -147,17 +148,16 @@ class Application:
                 
 
 if __name__ == '__main__':
-    tree = STree()
-    # tree = STree("asjknx$")
-    tree.build_with_automatic_end(["abacdacdacdbc"])
+    # tree = STree()
+    # tree.build_with_automatic_end(["abacdacdacdbc"])
     # tree.build_with_automatic_end(["cacaocac", "ccaooc"])
     # tree.build("1234332214$")
     # tree.build("asjknx")
-    print(tree)
+    # print(tree)
 
     # print(Application.lcs("12335665464566321", "12366546456653321"))
     # print(Application.lcs("abcd", "bcd", debug=True))
     # print(Application.lcss(["abcdfds", "bfdbcdfew", "bcdrgde"], debug=True))
-
+    print(Application.lcss(["acacs", "caccuiesscca", "kascnnckccac", "cccjssaaacacccs"]))
     
 
