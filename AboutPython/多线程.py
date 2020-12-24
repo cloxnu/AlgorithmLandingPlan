@@ -1,4 +1,6 @@
-import threading, time
+import threading
+import time
+
 
 def multi_thread_func():
     print("thread {} is running...".format(threading.current_thread().name))

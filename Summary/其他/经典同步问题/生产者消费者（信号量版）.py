@@ -45,32 +45,10 @@ class Consumer(threading.Thread):
 
 
 if __name__ == "__main__":
-    producer1 = Producer("1")
-    producer2 = Producer("2")
-    producer3 = Producer("3")
-    producer4 = Producer("4")
-    producer5 = Producer("5")
-    producer6 = Producer("6")
-    producer7 = Producer("7")
-    producer8 = Producer("8")
-
-    consumer1 = Consumer("1")
-    consumer2 = Consumer("2")
-    consumer3 = Consumer("3")
-    consumer4 = Consumer("4")
-    consumer5 = Consumer("5")
-
-    producer1.start()
-    producer2.start()
-    producer3.start()
-    producer4.start()
-    producer5.start()
-    producer6.start()
-    producer7.start()
-    producer8.start()
-    consumer1.start()
-    consumer2.start()
-    consumer3.start()
-    consumer4.start()
-    consumer5.start()
+    for i in range(8):
+        producer = Producer(str(i))
+        producer.start()
+    for i in range(5):
+        consumer = Consumer(str(i))
+        consumer.start()
 
