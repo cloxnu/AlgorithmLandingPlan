@@ -29,15 +29,14 @@ def get_next(p: str) -> list:
 def kmp(s: str, p: str) -> int:
     i, j = 0, 0
     next = get_next(p)
-    print(next)
     while i < len(s) and j < len(p):
-        print(i, s[i], j, p[j])
+        # print(i, s[i], j, p[j])
         if j == -1 or s[i] == p[j]:
             i += 1
             j += 1
         else:
-            j = next[j] # 失配，调转去 next 里指向的值继续匹配
-    if j == len(p): # 匹配成功
+            j = next[j]  # 失配，调转去 next 里指向的值继续匹配
+    if j == len(p):  # 匹配成功
         return i - j
     return -1
 
