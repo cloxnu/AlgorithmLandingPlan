@@ -37,8 +37,8 @@ def merge_sort_iter(nums: list) -> list:
         if left >= right - 1: continue
         mid = left + (right - left) // 2
         res.append((left, mid, right))
-        stack.append((left, mid)) # 先入栈左半段
-        stack.append((mid, right)) # 再入栈右半段
+        stack.append((left, mid))  # 先入栈左半段
+        stack.append((mid, right))  # 再入栈右半段
         
     for left, mid, right in reversed(res):
         nums[left:right] = merge(nums[left:mid], nums[mid:right])

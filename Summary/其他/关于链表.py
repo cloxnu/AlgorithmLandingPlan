@@ -19,6 +19,7 @@ class ListNode:
 快慢指针，相撞即有环
 """
 
+
 def hasCycle(head: ListNode) -> bool:
     slow = fast = head
     while fast and fast.next:
@@ -41,6 +42,7 @@ def hasCycle(head: ListNode) -> bool:
 fast 的路程一定是 slow 的两倍，所以 a + n(b + c) + b = 2a + 2b
 所以 a = (n - 1)(b + c) + c
 """
+
 
 def detectCycle(head: ListNode) -> ListNode or None:
     slow = fast = head
@@ -70,6 +72,7 @@ def detectCycle(head: ListNode) -> ListNode or None:
 时间 O(n) 空间 O(1)
 """
 
+
 def getIntersectionNode(headA: ListNode, headB: ListNode) -> ListNode or None:
     nodeA, nodeB = headA, headB
     while nodeA != nodeB:
@@ -90,6 +93,7 @@ def getIntersectionNode(headA: ListNode, headB: ListNode) -> ListNode or None:
 快慢指针，快的到链表尾，慢的即在中点     
 """
 
+
 def middleNode(head: ListNode) -> ListNode:
     slow = fast = head
     while fast and fast.next:
@@ -106,6 +110,7 @@ def middleNode(head: ListNode) -> ListNode:
 
 双指针
 """
+
 
 def reverseList(head: ListNode) -> ListNode:
     pre, curr = None, head
@@ -125,6 +130,7 @@ output: 2 -> 1 -> 4 -> 3 -> 5
 
 时间 O(n) 空间 O(1)
 """
+
 
 def reverseKGroup(head: ListNode, k: int) -> ListNode:
     def reverse(one_head: ListNode, one_tail: ListNode) -> (ListNode, ListNode):
@@ -154,6 +160,7 @@ input: 1 -> 2 -> 4; 1 -> 3 -> 4
 output: 1 -> 1 -> 2 -> 3 -> 4 -> 4
 """
 
+
 def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
     n1 = dummy = ListNode(0, next=l1)
     n2 = l2
@@ -172,6 +179,7 @@ def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
 input: 1 -> 4 -> 5; 1 -> 3 -> 4; 2 -> 6
 output: 1 -> 1 -> 2 -> 3 -> 4 -> 4 -> 5 -> 6
 """
+
 
 def mergeKLists(lists: list) -> ListNode:
     def merge2Lists(l1: ListNode, l2: ListNode) -> ListNode:
