@@ -24,7 +24,7 @@ pass
 
 假设物品数 n = 3  costs = [1, 2, 5]  values = [3, 7, 15]  space = 7
 
-j       0   1   2   3   4   5   6   7
+j       0   1   2   3   4   5   6   7   space
 dp[j]   -----------------------------
 init    0   0   0   0   0   0   0   0
 1       0   3   3   3   3   3   3   3
@@ -36,7 +36,7 @@ init    0   0   0   0   0   0   0   0
 def zero_one_back(n: int, costs: list, values: list, space: int):
     dp = [0] * (space + 1)
 
-    for i in range(n):
+    for i in range(n):  # 0-1 背包问题中，这两层循环不可以交换
         for j in reversed(range(space + 1)):
             if j < costs[i]:
                 break  # 这里因为 j 是有序的（越来越小），所以可以用 break，否则用 continue
@@ -58,7 +58,7 @@ def zero_one_back(n: int, costs: list, values: list, space: int):
 
 假设物品数 n = 3  costs = [1, 2, 5]  values = [3, 7, 15]  space = 7
 
-j       0   1   2   3   4   5   6   7
+j       0   1   2   3   4   5   6   7   space
 dp[j]   -----------------------------
 init    0   0   0   0   0   0   0   0
 1       0   3   6   9   12  15  18  21
@@ -70,7 +70,7 @@ init    0   0   0   0   0   0   0   0
 def complete_back(n: int, costs: list, values: list, space: int):
     dp = [0] * (space + 1)
 
-    for i in range(n):
+    for i in range(n):  # 完全背包问题中，这两层循环可以交换
         for j in range(space + 1):
             if j < costs[i]:
                 continue  # 这里是 continue
